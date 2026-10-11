@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rob DeGeorge</title>
+  <meta name="description" content="Rob DeGeorge — things I'm building.">
+  <link rel="canonical" href="https://robdegeorge.com/">
+  <style>
+    :root {
+      --bg: #f6f4ef; --text: #1d1c1a; --muted: #6b675f; --line: #dcd7cc; --accent: #2f6f5e;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #121413; --text: #e8e6e1; --muted: #9a968d; --line: #2a2d2b; --accent: #7cc4ad; }
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html { background: var(--bg); }
+    body {
+      min-height: 100dvh; display: grid; place-items: center; padding: 32px 20px;
+      font: 400 clamp(17px, 1.1vw + 12px, 20px)/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text); background: var(--bg);
+    }
+    main { width: 100%; max-width: 30rem; }
+    h1 { font-size: 2em; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
+    .note { color: var(--muted); margin-top: .5em; }
+    ul { list-style: none; padding: 0; margin-top: 2.25em; border-top: 1px solid var(--line); }
+    li { border-bottom: 1px solid var(--line); }
+    a { color: inherit; text-decoration: none; display: flex; justify-content: space-between; gap: 1em; padding: .9em 0; }
+    a span:last-child { color: var(--muted); }
+    a:hover span:first-child, a:focus-visible span:first-child { color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+    footer { margin-top: 2.25em; color: var(--muted); font-size: .85em; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Rob DeGeorge</h1>
+    <p class="note">Nothing much here yet. Things I'm building:</p>
+    <ul>
+      <li><a href="/octave/"><span>OCTAVE</span><span>open-source car infotainment &rarr;</span></a></li>
+      <li><a href="https://github.com/RobDeGeorge"><span>GitHub</span><span>everything else &rarr;</span></a></li>
+    </ul>
+    <footer>robdegeorge.com</footer>
+  </main>
+</body>
+</html>
