@@ -28,14 +28,18 @@ site owns the domain.
   only have one custom domain.
 - Both domains were bought at **Squarespace Domains**.
 
-## Launch checklist (status as of 2026-10-11: files staged, nothing pushed)
+## Launch checklist (status as of 2026-10-11: steps 1–2 done except the custom domain; both sites live on robdegeorge.github.io)
 
-1. **OCTAVE side** (in `../_OCTAVE`): commit and push `.github/workflows/wiki-pages.yml` and the
+Note: GitHub turned on Pages for this repo in legacy branch mode the moment it was created, so it was
+switched to `build_type=workflow` with a PUT. The custom domain (`cname`) is held back until DNS points
+at GitHub. Setting it earlier makes `robdegeorge.github.io` redirect to a domain that still serves Squarespace.
+
+1. ✅ **OCTAVE side** (in `../_OCTAVE`): commit and push `.github/workflows/wiki-pages.yml` and the
    `wiki/development.html` note. Turn on Pages with source "GitHub Actions":
    `gh api -X POST repos/RobDeGeorge/OCTAVE/pages -f build_type=workflow`
    Then run the workflow (`gh workflow run wiki-pages.yml -R RobDeGeorge/OCTAVE`) and check
    `https://robdegeorge.github.io/OCTAVE/`.
-2. **This repo**: initial commit, then `gh repo create RobDeGeorge/RobDeGeorge.github.io --public --source . --push`.
+2. ✅ (except `cname`) **This repo**: initial commit, then `gh repo create RobDeGeorge/RobDeGeorge.github.io --public --source . --push`.
    Turn on Pages the same way (`gh api -X POST repos/RobDeGeorge/RobDeGeorge.github.io/pages -f build_type=workflow`).
    Then set the custom domain: `gh api -X PUT repos/RobDeGeorge/RobDeGeorge.github.io/pages -f cname=robdegeorge.com`.
 3. **Verify the domain on GitHub first** (this blocks domain takeover): github.com → Settings (account)
