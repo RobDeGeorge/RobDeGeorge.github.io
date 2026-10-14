@@ -28,7 +28,7 @@ site owns the domain.
   only have one custom domain.
 - Both domains were bought at **Squarespace Domains**.
 
-## Launch checklist (status as of 2026-10-11: steps 1–2 done except the custom domain; both sites live on robdegeorge.github.io)
+## Launch checklist (status as of 2026-10-13: steps 1–4 and 6 done, robdegeorge.com live on HTTPS; step 5 (robertdegeorge.com forwarding) and the step 7 smoke test of it still to do)
 
 Note: GitHub turned on Pages for this repo in legacy branch mode the moment it was created, so it was
 switched to `build_type=workflow` with a PUT. The custom domain (`cname`) is held back until DNS points
@@ -39,14 +39,15 @@ at GitHub. Setting it earlier makes `robdegeorge.github.io` redirect to a domain
    `gh api -X POST repos/RobDeGeorge/OCTAVE/pages -f build_type=workflow`
    Then run the workflow (`gh workflow run wiki-pages.yml -R RobDeGeorge/OCTAVE`) and check
    `https://robdegeorge.github.io/OCTAVE/`.
-2. ✅ (except `cname`) **This repo**: initial commit, then `gh repo create RobDeGeorge/RobDeGeorge.github.io --public --source . --push`.
+2. ✅ **This repo**: initial commit, then `gh repo create RobDeGeorge/RobDeGeorge.github.io --public --source . --push`.
    Turn on Pages the same way (`gh api -X POST repos/RobDeGeorge/RobDeGeorge.github.io/pages -f build_type=workflow`).
    Then set the custom domain: `gh api -X PUT repos/RobDeGeorge/RobDeGeorge.github.io/pages -f cname=robdegeorge.com`.
-3. **Verify the domain on GitHub first** (this blocks domain takeover): github.com → Settings (account)
+3. ✅ **Verify the domain on GitHub first** (this blocks domain takeover): github.com → Settings (account)
    → Pages → Add a domain → `robdegeorge.com`. GitHub shows a TXT record
    (`_github-pages-challenge-RobDeGeorge`) to add in Squarespace. Click Verify after it propagates.
-4. **Squarespace DNS for robdegeorge.com** (Domains → robdegeorge.com → DNS):
-   - Delete the "Squarespace Defaults" preset records, because they conflict.
+4. ✅ **Squarespace DNS for robdegeorge.com** (Domains → robdegeorge.com → DNS):
+   - Delete the "Squarespace Defaults" preset records, because they conflict. Keep the "Domain Connect"
+     and "Email Security" presets (the latter blocks spoofed mail from the domain).
    - Add custom records:
      - `@` A → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
      - `@` AAAA → `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
@@ -55,7 +56,7 @@ at GitHub. Setting it earlier makes `robdegeorge.github.io` redirect to a domain
 5. **Squarespace for robertdegeorge.com**: Domain forwarding → `https://robdegeorge.com`, permanent
    (301), forward the path, and include `www`. Confirm that `https://robertdegeorge.com` (HTTPS, not
    only HTTP) forwards without a certificate warning.
-6. Once GitHub has issued the certificate (Settings → Pages shows it, which can take up to about an
+6. ✅ Once GitHub has issued the certificate (Settings → Pages shows it, which can take up to about an
    hour after DNS), tick **Enforce HTTPS**:
    `gh api -X PUT repos/RobDeGeorge/RobDeGeorge.github.io/pages -F https_enforced=true`
 7. Smoke test: `https://robdegeorge.com/`, `/octave/` → `/OCTAVE/`, `/OCTAVE/settings-ui.html`, wiki
