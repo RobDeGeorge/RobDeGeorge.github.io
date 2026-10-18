@@ -11,6 +11,9 @@ is served under that domain at `/<RepoName>/`.
 - `public/index.html` is a placeholder homepage on purpose. Keep it small until there is a real plan
   for it.
 - `public/octave/index.html` redirects the lowercase `/octave/` to `/OCTAVE/`.
+- `public/commandcreation/index.html` redirects `/commandcreation/` to `/CommandCreation/`. That is
+  the CommandCreation repo's project site, served from its `gh-pages` branch, which
+  `../_CommandCreation/scripts/deploy-site.sh` force-pushes (landing page + the WebAssembly build).
 
 ## Where the OCTAVE wiki comes from (not this repo)
 
