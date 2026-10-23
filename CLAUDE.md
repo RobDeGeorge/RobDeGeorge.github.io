@@ -10,7 +10,7 @@ is served under that domain at `/<RepoName>/`.
 - `public/CNAME` is `robdegeorge.com`. `public/.nojekyll` turns off Jekyll.
 - `public/index.html` is a placeholder homepage on purpose. Keep it small until there is a real plan
   for it.
-- `public/octave/index.html` redirects the lowercase `/octave/` to `/OCTAVE/`.
+- `public/octave/index.html` redirects the lowercase `/octave/` to `/OCTAVE/`; `public/octave/wiki/index.html` redirects `/octave/wiki/` to `/OCTAVE/wiki/` (the wiki moved under the app demo).
 - `public/commandcreation/index.html` redirects `/commandcreation/` to `/CommandCreation/`. That is
   the CommandCreation repo's project site, served from its `gh-pages` branch, which
   `../_CommandCreation/scripts/deploy-site.sh` force-pushes (landing page + the WebAssembly build).
